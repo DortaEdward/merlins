@@ -5,6 +5,9 @@ import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "@/trpc/react";
 import { ClerkLoaded, ClerkProvider } from "@clerk/nextjs";
+import MaxWidthWrapper from "../_components/MaxWidthWrapper";
+import Footer from "../_components/Footer";
+import Navbar from "../_components/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,10 +31,12 @@ export default function RootLayout({
         <ClerkProvider>
           <ClerkLoaded>
             <TRPCReactProvider cookies={cookies().toString()}>
-              <main className="relative flex flex-col min-h-screen">
-                <div className="flex-grow flex-1">
-                  {children}
+              <main className="relative flex flex-col min-h-screen h-full">
+                <Navbar/>
+                <div className="flex-grow flex-1 h-full">
+                  { children }
                 </div>
+                <Footer />
               </main>
             </TRPCReactProvider>
           </ClerkLoaded>
