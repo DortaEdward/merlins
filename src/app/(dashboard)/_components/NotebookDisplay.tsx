@@ -17,9 +17,9 @@ export default function NotebookDisplay({ notebooks, active }: Props) {
         <>
           {notebooks.map((notebook) => {
             return (
-              <div key={notebook.name} className="flex items-center gap-2">
+              <div key={notebook.name} className={`flex items-center gap-2 ${active?.name === notebook.name && "bg-gray-200"}`}>
                 <p>{notebook.icon ? notebook.icon :""}</p>
-                <p>{notebook.name}</p>
+                <p className="line-clamp-1">{notebook.name}</p>
               </div>
             );
           })}
